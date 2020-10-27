@@ -8,10 +8,9 @@ const gameBoard = document.getElementById('game-board')
 
 function main(currentTime) {
     if (gameOver) {
-        if( confirm('You lost. Try again?')){
-            window.location = '/'
-        }
-        return
+        if( confirm ('You lost. Try again?')){
+            window.reload;
+        } return;
     }
 
 
