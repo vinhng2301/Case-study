@@ -1,7 +1,7 @@
 import {getInputDirection} from "./input.js";
 
-export const SNAKE_SPEED = 5
-const snakeBody = [{ x: 11, y: 11 }]
+export const SNAKE_SPEED = 2
+let snakeBody = [{ x: 11, y: 11 }]
 let newSegments = 0
 
 export function update (){
@@ -15,11 +15,16 @@ export function update (){
      snakeBody[0].y += inputDirection.y
 }
 
+export function snake_die(){
+    snakeBody = [{ x: 11, y: 11 }];
+}
+
 export function draw (gameBoard){
     snakeBody.forEach(segment =>  {
         const snakeElement = document.createElement('div')
         snakeElement.style.gridRowStart = segment.y
         snakeElement.style.gridColumnStart = segment.x
+        snakeElement.classList.add('snake')
         snakeElement.classList.add('snake')
         gameBoard.appendChild(snakeElement)
 })
@@ -44,6 +49,14 @@ export function snakeIntersection () {
     return onSnake(snakeBody[0], { ignoreHead: true})
 }
 
+export function snakeHitObs(snakeHead, array_obs) {
+    for (let i = 0; i < array_obs.length; i++) {
+        if (snakeHead.x == array_obs[i].x && snakeHead.y == array_obs[i].y) {
+            return true
+        }
+    } return false
+}
+
 function equalPositions (pos1, pos2) {
     return pos1.x === pos2.x && pos1.y === pos2.y
 }
@@ -55,3 +68,4 @@ function addSegments (){
 
     newSegments = 0
 }
+
