@@ -20,7 +20,7 @@ function main(currentTime) {
 
 
     window.requestAnimationFrame(main)
-    const secondsSinceLastRender =( currentTime - lastRenderTime ) / 300
+    const secondsSinceLastRender =( currentTime - lastRenderTime ) / 100
     if (secondsSinceLastRender < 1 / SNAKE_SPEED) return
 
 
